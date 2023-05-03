@@ -7,6 +7,11 @@
 <title>Tous les Utilisateurs</title>
 </head>
 <body>
+	<nav>
+		<ul>
+			<li>Accueil</li>
+		</ul>
+	</nav>
 	<h1>Liste des utilisateurs</h1>
 	<table>
 		<thead>
@@ -19,7 +24,15 @@
 			</tr>	
 		</thead>
 		<tbody>
-			
+			<% for(int i=0; i<3; i++) { %>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			<% } %>
 		</tbody>
 	</table>
 </body>

@@ -1,4 +1,4 @@
-package controleur;
+package service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,13 +8,14 @@ import modeles.Produit;
 import modeles.Utilisateur;
 
 public class TraitementProduit {
-	public void ajouterProduit(Produit prod) {
+	
+	public static void ajouterProduit(Produit prod) {
 		//connexion a la bdd
 		ConnexionBase cb = new ConnexionBase();
 		cb.connect();
 		
 		//ecrire la requete
-		String req = "insert into produit(libelle, prixu, description, datefabm dateexp) values('"+prod.getLibelle()+"', '"+prod.getPrixU()+"', '"+prod.getDescription()+"', '"+prod.getDateFab()+"', '"+prod.getDateExp()+"') ";
+		String req = "insert into produit(libelle, prixu, description, datefab, dateexp) values('"+prod.getLibelle()+"', '"+prod.getPrixU()+"', '"+prod.getDescription()+"', '"+prod.getDateFab()+"', '"+prod.getDateExp()+"') ";
 		
 		//executer la requete
 		try {
@@ -25,7 +26,7 @@ public class TraitementProduit {
 		}
 	}
 	
-	public void modifierProduit(Produit prod) {
+	public static void modifierProduit(Produit prod) {
 		//connexion a la bdd
 		ConnexionBase cb = new ConnexionBase();
 		cb.connect();
@@ -42,7 +43,7 @@ public class TraitementProduit {
 		}
 	}
 	
-	public void supprimerProduit(int id) {
+	public static void supprimerProduit(int id) {
 		//connexion a la bdd
 		ConnexionBase cb = new ConnexionBase();
 		cb.connect();
@@ -59,7 +60,7 @@ public class TraitementProduit {
 		}
 	}
 	
-	public ResultSet chercherProduit(int id) {
+	public static ResultSet chercherProduit(int id) {
 		ResultSet rs = null;
 		
 		//connexion a la bdd
@@ -80,7 +81,7 @@ public class TraitementProduit {
 		return rs;
 	}
 	
-	public ResultSet listerProduits() {
+	public static ResultSet listerProduits() {
 		ResultSet rs = null;
 		
 		//connexion a la bdd

@@ -1,4 +1,4 @@
-package controleur;
+package service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,7 +8,7 @@ import modeles.Utilisateur;
 
 public class TraitementUtilisateur {
 	
-	public void ajouterUtilisateur(Utilisateur util) {
+	public static void ajouterUtilisateur(Utilisateur util) {
 		//connexion a la bdd
 		ConnexionBase cb = new ConnexionBase();
 		cb.connect();
@@ -25,7 +25,7 @@ public class TraitementUtilisateur {
 		}
 	}
 	
-	public void modifierUtilisateur(Utilisateur util) {
+	public static void modifierUtilisateur(Utilisateur util) {
 		//connexion a la bdd
 		ConnexionBase cb = new ConnexionBase();
 		cb.connect();
@@ -42,7 +42,7 @@ public class TraitementUtilisateur {
 		}
 	}
 	
-	public void supprimerUtilisateur(int id) {
+	public static void supprimerUtilisateur(int id) {
 		//connexion a la bdd
 		ConnexionBase cb = new ConnexionBase();
 		cb.connect();
@@ -59,7 +59,7 @@ public class TraitementUtilisateur {
 		}
 	}
 	
-	public ResultSet chercherUtilisateur(int id) {
+	public static ResultSet chercherUtilisateur(int id) {
 		ResultSet rs = null;
 		
 		//connexion a la bdd
@@ -80,7 +80,7 @@ public class TraitementUtilisateur {
 		return rs;
 	}
 	
-	public ResultSet listerUtilisateurs() {
+	public static ResultSet listerUtilisateurs() {
 		ResultSet rs = null;
 		
 		//connexion a la bdd
@@ -101,5 +101,32 @@ public class TraitementUtilisateur {
 		return rs;
 	}
 	
+	public static Utilisateur testLogin(String login, String password) {
+		ResultSet rs = null;
+		Utilisateur u = null;
+		
+		ConnexionBase cb = new ConnexionBase();
+		cb.connect();
+		
+		String req = "select * from utilisateur where login='"+login+"' and password='"+password+"' ";
+		
+		try {
+			rs = cb.st.executeQuery(req);
+			while(rs.next()) {
+				u = new Utilisateur();
+				u.setId(rs.getInt("id"));
+				u.setPrenom(rs.getString("prenom"));
+				u.setNom(rs.getString("nom"));
+				u.setLogin(rs.getString("login"));
+				u.setPassword(rs.getString("password"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+				
+		return u;
+	}
 	
 }

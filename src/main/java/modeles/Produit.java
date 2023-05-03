@@ -1,6 +1,6 @@
 package modeles;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Produit {
 
@@ -8,14 +8,14 @@ public class Produit {
 	private String libelle;
 	private int prixU;
 	private String description;
-	private Date dateFab;
-	private Date dateExp;
+	private LocalDate dateFab;
+	private LocalDate dateExp;
 	
 	public Produit() {
 		super();
 	}
 
-	public Produit(String libelle, int prixU, String description, Date dateFab, Date dateExp) {
+	public Produit(String libelle, int prixU, String description, LocalDate dateFab, LocalDate dateExp) {
 		super();
 		this.libelle = libelle;
 		this.prixU = prixU;
@@ -24,7 +24,7 @@ public class Produit {
 		this.dateExp = dateExp;
 	}
 
-	public Produit(int id, String libelle, int prixU, String description, Date dateFab, Date dateExp) {
+	public Produit(int id, String libelle, int prixU, String description, LocalDate dateFab, LocalDate dateExp) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
@@ -66,19 +66,19 @@ public class Produit {
 		this.description = description;
 	}
 
-	public Date getDateFab() {
+	public LocalDate getDateFab() {
 		return dateFab;
 	}
 
-	public void setDateFab(Date dateFab) {
+	public void setDateFab(LocalDate dateFab) {
 		this.dateFab = dateFab;
 	}
 
-	public Date getDateExp() {
+	public LocalDate getDateExp() {
 		return dateExp;
 	}
 
-	public void setDateExp(Date dateExp) {
+	public void setDateExp(LocalDate dateExp) {
 		this.dateExp = dateExp;
 	}
 	

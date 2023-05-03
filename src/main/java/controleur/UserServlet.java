@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import modeles.Utilisateur;
+import service.TraitementUtilisateur;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -45,9 +46,15 @@ public class UserServlet extends HttpServlet {
 				
 		Utilisateur util = new Utilisateur(prenom, nom, login, password);
 		
-		TraitementUtilisateur tU = new TraitementUtilisateur();
-		tU.ajouterUtilisateur(util);
+		TraitementUtilisateur.ajouterUtilisateur(util);
 		
+		PrintWriter pw = response.getWriter();
+		pw.print("<html>");
+		pw.print("<h1>");
+		pw.print("Enregistrement effectue avec succes.");
+		pw.print("</h1>");
+		pw.print("<a href='UserForm.jsp'>Ajouter un autre</a>");
+		pw.print("</html>");
 		
 	}
 

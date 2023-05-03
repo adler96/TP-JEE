@@ -12,6 +12,12 @@ public class Utilisateur {
 		super();
 	}
 	
+	public Utilisateur(String login, String password) {
+		super();
+		this.login = login;
+		this.password = password;
+	}
+
 	public Utilisateur(String prenom, String nom, String login, String password) {
 		super();
 		this.prenom = prenom;
